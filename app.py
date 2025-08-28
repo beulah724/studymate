@@ -8,7 +8,7 @@ from ibm_watsonx_ai import Credentials
 from dotenv import load_dotenv
 import os
 
-# ----------------- LOAD ENVIRONMENT VARIABLES -----------------
+# LOAD ENVIRONMENT VARIABLES 
 load_dotenv()
 api_key = os.getenv("WATSONX_API_KEY")
 project_id = os.getenv("WATSONX_PROJECT_ID")
@@ -96,4 +96,5 @@ if uploaded_files:
         st.markdown("**📚 Sources:**")
         for r in results:
             st.write(f"- {r[:300]}...")
+
 
