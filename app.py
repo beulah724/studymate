@@ -14,7 +14,7 @@ api_key = os.getenv("WATSONX_API_KEY")
 project_id = os.getenv("WATSONX_PROJECT_ID")
 
 if not api_key or not project_id:
-    st.error("⚠️ Please add WATSONX_API_KEY and WATSONX_PROJECT_ID in your .env file.")
+    st.error("Please add WATSONX_API_KEY and WATSONX_PROJECT_ID in your .env file.")
     st.stop()
 
 creds = Credentials(
@@ -22,7 +22,7 @@ creds = Credentials(
     url="https://us-south.ml.cloud.ibm.com"
 )
 
-# ----------------- IBM WATSONX MODEL -----------------
+# IBM WATSONX MODEL
 llm_model = Model(
     model_id="mistralai/mixtral-8x7b-instruct",
     credentials=creds,
@@ -30,10 +30,10 @@ llm_model = Model(
     project_id=project_id
 )
 
-# ----------------- EMBEDDING MODEL -----------------
+# EMBEDDING MODEL
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
-# ----------------- FUNCTIONS -----------------
+# FUNCTIONS 
 def read_pdf(file):
     """Extract text from PDF file"""
     doc = fitz.open(stream=file.read(), filetype="pdf")
@@ -71,7 +71,7 @@ def generate_answer(question, context):
     response = llm_model.generate_text(prompt=prompt)
     return response
 
-# ----------------- STREAMLIT UI -----------------
+# STREAMLIT UI 
 st.set_page_config(page_title="StudyMate", page_icon="📘", layout="wide")
 st.title("📘 StudyMate - Your AI Study Assistant")
 
@@ -96,3 +96,4 @@ if uploaded_files:
         st.markdown("**📚 Sources:**")
         for r in results:
             st.write(f"- {r[:300]}...")
+
