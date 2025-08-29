@@ -1,7 +1,2 @@
-streamlit
-pymupdf
-faiss-cpu
-sentence-transformers
-ibm-watsonx-ai
-python-dotenv
-numpy
+Flask
+requests
